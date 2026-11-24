@@ -20,7 +20,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Unpack game source
-        run: unzip -q potato-hunter-demo-source.zip -d game
+        run: |
+          unzip -q potato-hunter-demo-source.zip -d game
+          if [ -f potato-hunter-demo-assets.zip ]; then
+            unzip -q potato-hunter-demo-assets.zip -d game
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: 22
